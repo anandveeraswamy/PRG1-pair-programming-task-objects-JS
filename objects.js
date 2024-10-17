@@ -53,12 +53,24 @@ function getBooksByAuthor(authorName) {
   
 
 function searchByBookName(searchTerm) {
-    
+    let booksBytitle = [];
+    for (const book of library) {
+        if( book.title.toLowerCase() === searchTerm.toLowerCase() ) {            
+            booksBytitle.push( {title: book.title, author: book.author} );
+        }
+    }
+    return booksBytitle;    
 }
   
   
 function displayLoanTotals() {
-    
+    let booksOnLoan = 0;
+    let booksnotOnLoan = 0;
+    for (const book of library) {
+        book.isLoaned ? booksOnLoan++ : booksnotOnLoan++;
+    }
+    console.log(`Total books on loan: ${booksOnLoan}`);
+    console.log("Total books not on loan: " + booksnotOnLoan);    
 }
   
   
